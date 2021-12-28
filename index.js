@@ -1,6 +1,9 @@
-const { Telegraf } = require('telegraf')
+// const { Telegraf } = require('telegraf')
+const {Composer} = require('micro-bot')
 
-const bot = new Telegraf("5026833569:AAHkz_WlSppeYYR-BgoAWOkheFjTQRPBJPc")
+// const bot = new Telegraf("5026833569:AAHkz_WlSppeYYR-BgoAWOkheFjTQRPBJPc")
+
+const bot = new Composer()
 
 bot.on('new_chat_members', (ctx) => {
     bot.telegram.sendMessage(ctx.chat.id,"Hello "+ctx.from.first_name + " "+ ctx.from.last_name +"\nHow can i help you?",{
@@ -41,4 +44,4 @@ bot.action("item1",(ctx)=>{
     })
 })
 
-bot.launch()
+module.exports = bot
